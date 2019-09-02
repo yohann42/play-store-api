@@ -10,8 +10,8 @@ import java.util.*;
 
 public class GooglePlayAPITest {
 
-    public static final String EMAIL = "konstantin.razdolbaev@gmail.com";
-    public static final String PASSWORD = "TemporaryPassword!";
+    public static final String EMAIL = "jodyh638@gmail.com";
+    public static final String PASSWORD = "ndkwqAJery";
     public static final String GSFID = "3f1abe856b0fa7fd";
     public static final String TOKEN = "jwSyrOU2RHDv2d82095MoHKOUHhO9KxBbkAoLCMkCKWqB9RUHbvq8VIWufBJcxwRn3_DGQ.";
 
@@ -28,6 +28,7 @@ public class GooglePlayAPITest {
         api.setGsfId(null);
         api.setToken(null);
         String ac2dmToken = api.generateAC2DMToken(EMAIL, PASSWORD);
+        System.out.println(ac2dmToken);
         Assert.assertEquals("TgSyrINgeerWByF9lukvliiumvlSapg-Gl2d7KbpL7esPQzdbcZ0BK2ktdohPRc2RZHRXw.", ac2dmToken);
         String gsfId = api.generateGsfId(EMAIL, ac2dmToken);
         Assert.assertEquals("307edaee584cc716", gsfId);
@@ -39,7 +40,7 @@ public class GooglePlayAPITest {
         Assert.assertEquals(1, requestAuthAc2dm.url().pathSegments().size());
         Assert.assertEquals("auth", requestAuthAc2dm.url().pathSegments().get(0));
         Map<String, String> vars = MockOkHttpClientAdapter.parseQueryString(MockOkHttpClientAdapter.getBodyBytes(requestAuthAc2dm));
-        Assert.assertEquals(14, vars.size());
+        Assert.assertEquals(13, vars.size());
         Assert.assertEquals("konstantin.razdolbaev@gmail.com", vars.get("Email"));
         Assert.assertEquals("TemporaryPassword!", vars.get("Passwd"));
         Assert.assertEquals("us", vars.get("device_country"));
@@ -86,7 +87,7 @@ public class GooglePlayAPITest {
         Assert.assertEquals(1, request.url().pathSegments().size());
         Assert.assertEquals("auth", request.url().pathSegments().get(0));
         Map<String, String> vars = MockOkHttpClientAdapter.parseQueryString(MockOkHttpClientAdapter.getBodyBytes(request));
-        Assert.assertEquals(13, vars.size());
+        Assert.assertEquals(12, vars.size());
         Assert.assertEquals("konstantin.razdolbaev@gmail.com", vars.get("Email"));
         Assert.assertEquals("TemporaryPassword!", vars.get("Passwd"));
         Assert.assertEquals("us", vars.get("device_country"));
